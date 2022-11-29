@@ -1,0 +1,99 @@
+<mat-accordion multi class="align-headers">
+  <mat-expansion-panel *ngFor="let vehicle of vehicles; index as i">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{vehicle.vehicleName}}
+      </mat-panel-title>
+      <mat-panel-description>
+        Details for {{vehicle.vehicleName}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="content-container">
+      <div id="nameInfo">
+        <mat-form-field class="name">
+          <mat-label>Make</mat-label>
+          <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle.vehicleMake">
+        </mat-form-field>
+
+        <mat-form-field class="name">
+          <mat-label>Model</mat-label>
+          <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle.vehicleName">
+        </mat-form-field>
+
+        <span class="spacer">
+
+        </span>
+
+        <button mat-icon-button color="warn" (click)="confirmDelete(vehicle._id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)="edits[i] = !edits[i]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+
+      <mat-form-field>
+        <mat-label>VIN</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vin">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Color</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleColor">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Seating Capacity</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleSeatingCapacity">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Available Seating Capacity</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleAvailableSeatingCapacity">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>License Plate Number</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLicensePlateNumber">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Condition</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleCondition">
+      </mat-form-field>
+
+      <h3>Vehicle Address</h3>
+
+      <mat-form-field>
+        <mat-label>Street Address 1</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLocation!.streetAddress1">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Street Address 2</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLocation!.streetAddress2">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLocation!.city">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLocation!.state!.name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput [disabled]="!edits[i]" [(ngModel)]="vehicle!.vehicleLocation!.state!.country!">
+      </mat-form-field>
+    </div>
+
+    <div id="actions" *ngIf="edits[i]">
+      <button mat-raised-button color="accent">Cancel</button>
+      <button mat-raised-button color="primary" (click)="updateVehicle(vehicle)">Submit</button>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+

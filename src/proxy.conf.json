@@ -1,0 +1,71 @@
+{
+  "/login": {
+    "target": "http://localhost:3000/auth/login",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/login": ""
+    }
+  },
+  "/signup": {
+    "target": "http://localhost:3000/auth/signup",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/signup": ""
+    }
+  },
+  "/register": {
+    "target": "http://localhost:3000/vehicle/register",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/register": ""
+    }
+  },
+  "/users": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/vehicle": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/vehicle/user": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/service/request": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/locationLookup": {
+    "target": "http://www.mapquestapi.com/geocoding/v1/reverse",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/locationLookup": ""
+    }
+  },
+  "/latLongLookup": {
+    "target": "http://www.mapquestapi.com/geocoding/v1/address",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/latLongLookup": ""
+    }
+  }
+}

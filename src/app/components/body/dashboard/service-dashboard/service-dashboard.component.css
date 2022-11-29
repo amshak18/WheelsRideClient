@@ -1,0 +1,28 @@
+.section-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+#nameInfo {
+  display: flex;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  padding-right: 5rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

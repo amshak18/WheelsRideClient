@@ -1,0 +1,99 @@
+.spacer {
+  flex: 1 1 auto
+}
+
+mat-toolbar {
+  flex-grow: inherit;
+  height: fit-content;
+}
+
+mat-toolbar-row {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  flex-grow: inherit;
+  height: fit-content;
+  justify-content: space-around;
+  align-items: flex-start;
+  font-size: small;
+}
+
+mat-toolbar-row.isPhonePortrait {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+h5 small {
+  font-size: xx-small;
+}
+
+h5 {
+  font-size: large;
+  text-transform: uppercase;
+}
+
+mat-toolbar, mat-toolbar h5 {
+  font: unset;
+  letter-spacing: revert;
+}
+
+a, p {
+  all: unset;
+  color: darkgrey;
+  cursor: pointer;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-items: flex-start;
+  align-content: flex-start;
+}
+
+.box.isPhonePortrait {
+  padding-top: 2rem;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: inherit;
+  align-items: flex-start;
+  width: fit-content;
+}
+
+/*defining custom class for placement of icons in footer*/
+.grid-footer {
+  display: grid;
+  grid-template-areas: 'linkedin github gmail facebook instagram';
+  column-gap: 25px;
+  row-gap: 0;
+  justify-items: center;
+  justify-content: space-around;
+}
+
+.grid-footer.linkedin {
+  grid-area: linkedin;
+  align-items: center;
+}
+
+.grid-footer.github {
+  grid-area: github;
+  align-items: center;
+}
+
+.grid-footer.gmail {
+  grid-area: gmail;
+  align-items: center;
+}
+
+.grid-footer.facebook {
+  grid-area: facebook;
+  align-items: center;
+}
+
+.grid-footer.instagram {
+  grid-area: instagram;
+  align-items: center;
+}

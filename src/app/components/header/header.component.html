@@ -1,0 +1,49 @@
+<div id="header-div">
+  <mat-toolbar color="primary">
+    <button routerLink="/" mat-icon-button aria-label="Example icon-button with menu icon">
+      <mat-icon> emoji_transportation</mat-icon>
+    </button>
+    <div class="header">
+      <span>WheelsRide</span>
+      <span class="spacer"></span>
+
+      <span *ngIf="isUserLoggedIn(); then userLoggedIn else userLoggedOut"></span>
+
+      <ng-template #userLoggedOut>
+        <button [routerLink]="'/signin'" mat-icon-button class="example-icon"
+                aria-label="Example icon-button with share icon">
+          <mat-icon>login</mat-icon>
+        </button>
+      </ng-template>
+
+      <ng-template #userLoggedIn>
+        <button *ngIf="isUserServiceProvider" routerLink="requests" mat-icon-button>
+          <mat-icon>local_taxi</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+  </mat-toolbar>
+</div>
+
+
+<mat-menu #accountMenu>
+  <button [routerLink]="['/dashboard']" mat-menu-item>
+    Profile
+  </button>
+  <button (click)="sidenav.toggle()" mat-menu-item>
+    Ride History
+  </button>
+  <button *ngIf="!isUserServiceProvider" [routerLink]="['/service/register']" mat-menu-item>
+    Register as service provider
+  </button>
+  <button (click)="logout()" mat-menu-item>
+    Logout
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-menu>
+
+
+

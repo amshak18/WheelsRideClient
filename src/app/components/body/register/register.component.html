@@ -1,0 +1,114 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar> emoji_transportation</mat-icon>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>To start using WheelsRide</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-stepper labelPosition="bottom" #stepper [linear]="true" [orientation]="orientation">
+      <mat-step [stepControl]="usernamePasswordFormGroup">
+        <form [formGroup]="usernamePasswordFormGroup">
+          <ng-template matStepLabel>Choose your login details</ng-template>
+          <div class="form-step">
+            <mat-form-field appearance="standard">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" [(ngModel)]="user.username" formControlName="usernamePasswordControl"
+                     placeholder="Username">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="user.password"
+                     formControlName="usernamePasswordControl">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                      [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="userInfoFormGroup">
+        <form [formGroup]="userInfoFormGroup">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <div class="form-step">
+            <mat-form-field appearance="standard">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" [(ngModel)]="user.firstName" formControlName="userInfoControl"
+                     placeholder="First Name">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" [(ngModel)]="user.lastName" formControlName="userInfoControl"
+                     placeholder="Last Name">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Email Id</mat-label>
+              <input matInput type="email" [(ngModel)]="user.emailId" formControlName="userInfoControl"
+                     placeholder="Last Name">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Phone number</mat-label>
+              <input matInput type="text" [(ngModel)]="user.phoneNumber" formControlName="userInfoControl"
+                     placeholder="Last Name">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="addressFormGroup" optional>
+        <form [formGroup]="addressFormGroup">
+          <ng-template matStepLabel>Fill out your address</ng-template>
+          <div class="form-step">
+            <mat-form-field appearance="standard">
+              <mat-label>Street Address 1</mat-label>
+              <input matInput type="text" [(ngModel)]="user.address.streetAddress1" formControlName="addressControl"
+                     placeholder="Main St">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Street Address 2</mat-label>
+              <input matInput type="text" [(ngModel)]="user.address.streetAddress2" formControlName="addressControl"
+                     placeholder="Side Rd">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>City</mat-label>
+              <input matInput type="text" [(ngModel)]="user.address.city" formControlName="addressControl"
+                     placeholder="Hoboken">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>State</mat-label>
+              <input matInput type="text" [(ngModel)]="user.address.state.name" formControlName="addressControl"
+                     placeholder="NY">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Country</mat-label>
+              <input matInput type="text" [(ngModel)]="user.address.state.country" formControlName="addressControl"
+                     placeholder="USA">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="signUp()">Sign Up</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>
+

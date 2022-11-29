@@ -1,0 +1,38 @@
+
+.header {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+.header.right {
+  flex-direction: row-reverse;
+}
+
+.spacer {
+  flex: 1 1 auto
+}
+
+.empty {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.empty img {
+  height: 150px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.saved-nav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-details {
+  margin-left: 3vw;
+}

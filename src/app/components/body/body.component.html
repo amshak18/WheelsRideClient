@@ -1,0 +1,32 @@
+<div class="search-container" [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+  <mat-form-field class="search-field" appearance="standard" hideRequiredMarker="false">
+    <mat-label>From</mat-label>
+    <input matInput type="text" [(ngModel)]="searchFrom" required>
+    <button *ngIf="searchFrom" matSuffix mat-icon-button aria-label="Clear" (click)="searchFrom=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button *ngIf="!searchFrom" matSuffix mat-icon-button aria-label="Get Current Location"
+            (click)="getCurrentLocation()">
+      <mat-icon>my_location</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+  <mat-form-field class="search-field" appearance="standard" hideRequiredMarker="false">
+    <mat-label>To</mat-label>
+    <input matInput type="text" [(ngModel)]="searchTo" required>
+    <button *ngIf="searchTo" matSuffix mat-icon-button aria-label="Clear" (click)="searchTo=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button [disabled]="!canSearch()" mat-raised-button color="primary" (click)="searchResults()">Search</button>
+</div>
+
+<div class="results-container">
+  <div *ngIf="resultsLoading; then loader"></div>
+</div>
+
+<ng-template #loader>
+  <mat-spinner></mat-spinner>
+</ng-template>

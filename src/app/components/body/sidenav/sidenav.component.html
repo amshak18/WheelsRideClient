@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <div class="header">
+    <div mat-subheader>Your Ride History</div>
+    <span class="spacer"></span>
+    <button (click)="sidenav.close()" mat-icon-button aria-label="Close Sidenav">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-list *ngIf="serviceRequests.length>0; else emptyList">
+  <mat-list-item *ngFor="let serviceRequest of serviceRequests">
+    <div>
+      <div mat-line>
+        <a [routerLink]="'/details'"
+           [state]="{data: {data:serviceRequest, from:serviceRequest.fromString, to:serviceRequest.toString}}">{{serviceRequest?.fromString | titlecase|slice:0:20}}
+          ...
+        </a>
+      </div>
+      <div mat-line>
+        {{serviceRequest?.requestedDate|date}}
+
+      </div>
+      <div mat-line>
+
+        <button color="warn" mat-icon-button (click)="confirmDelete(serviceRequest!._id!)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+<ng-template #emptyList>
+  <div class="empty">
+    <img src="assets/images/planmap.png" alt="empty list of trips">
+    <span>
+      Your past rides will show here.
+    </span>
+  </div>
+
+</ng-template>

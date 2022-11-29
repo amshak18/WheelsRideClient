@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+.header.right {
+  flex-direction: row-reverse;
+}
+
+.spacer {
+  flex: 1 1 auto
+}

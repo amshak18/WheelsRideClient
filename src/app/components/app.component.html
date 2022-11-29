@@ -1,0 +1,15 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="over" position="end">
+    <app-sidenav [sidenav]="sidenav"></app-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div id="content" class="container-fluid">
+      <app-header [sidenav]="sidenav"></app-header>
+      <div id="body-container" class="container">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

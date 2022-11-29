@@ -1,0 +1,123 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar> emoji_transportation</mat-icon>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>To start providing service with WheelsRide</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-stepper labelPosition="bottom" #stepper [linear]="true" [orientation]="orientation">
+      <mat-step [stepControl]="vehicleInfoFormGroup">
+        <form [formGroup]="vehicleInfoFormGroup">
+          <ng-template matStepLabel>Enter your vehicle details</ng-template>
+          <div class="form-step">
+            <mat-form-field appearance="standard">
+              <mat-label>Vehicle Make</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleMake" formControlName="vehicleInfoControl"
+                     placeholder="Toyota">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Vehicle name</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleName" formControlName="vehicleInfoControl"
+                     placeholder="Camry">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Vehicle color</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleColor" formControlName="vehicleInfoControl"
+                     placeholder="Red">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>VIN</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vin" formControlName="vehicleInfoControl"
+                     placeholder="JJ12345JK78945612">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Seating Capacity</mat-label>
+              <input matInput type="number" [(ngModel)]="vehicle.vehicleSeatingCapacity"
+                     formControlName="vehicleInfoControl"
+                     placeholder="4">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Available Seating Capacity</mat-label>
+              <input matInput type="number" [(ngModel)]="vehicle.vehicleAvailableSeatingCapacity"
+                     formControlName="vehicleInfoControl"
+                     placeholder="2">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>License plate number</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLicensePlateNumber"
+                     formControlName="vehicleInfoControl"
+                     placeholder="1ABC23">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Vehicle Condition</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleCondition" formControlName="vehicleInfoControl"
+                     placeholder="OK">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="vehicleAddressFormGroup">
+        <form [formGroup]="vehicleAddressFormGroup">
+          <ng-template matStepLabel>Vehicle Location Information</ng-template>
+          <div class="form-step">
+            <mat-form-field appearance="standard">
+              <mat-label>Street Address 1</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLocation.streetAddress1"
+                     formControlName="vehicleAddressControl"
+                     placeholder="Main St">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Street Address 2</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLocation.streetAddress2"
+                     formControlName="vehicleAddressControl"
+                     placeholder="Side Rd">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>City</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLocation.city"
+                     formControlName="vehicleAddressControl"
+                     placeholder="Hoboken">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>State</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLocation.state.name"
+                     formControlName="vehicleAddressControl"
+                     placeholder="NY">
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+              <mat-label>Country</mat-label>
+              <input matInput type="text" [(ngModel)]="vehicle.vehicleLocation.state.country"
+                     formControlName="vehicleAddressControl"
+                     placeholder="USA">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Click on register to complete your registration!</p>
+        <div *ngIf="!registerInProgress; else progress">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+          <button mat-button (click)="register()">Register</button>
+        </div>
+
+      </mat-step>
+    </mat-stepper>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #progress>
+  <div>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>
+

@@ -1,0 +1,46 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+    <div class="box">
+      <mat-icon> emoji_transportation</mat-icon>
+      <h5>WheelsRide</h5>
+    </div>
+    <div class="box" [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+      <span><h5>Technologies Used</h5></span>
+      <span><a href="https://angular.io/">Angular</a></span>
+      <span><a href="https://www.typescriptlang.org/">TypeScript</a></span>
+      <span><p>HTML5</p></span>
+      <span><p>CSS3</p></span>
+      <span><a href="https://ng-bootstrap.github.io/#/home">ngBootstrap</a></span>
+      <span><a href="https://material.angular.io/">Material UI</a></span>
+      <span><a href="https://github.com/FortAwesome/angular-fontawesome">FontAwesome</a></span>
+    </div>
+    <div class="box" [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+      <span><h5>API<small>s</small> Used</h5></span>
+      <span><a
+        href="https://developers.google.com/maps/documentation/places/web-service/overview">Google Places</a></span>
+      <span><a href="https://github.com/angular/components/tree/main/src/google-maps#readme">Google Maps</a></span>
+      <span><a href="https://openweathermap.org/api">OpenWeatherMap</a></span>
+      <span><a href="https://developers.amadeus.com/self-service/category/hotel">Amadeus Hotel APIs</a></span>
+      <span><a href="https://developer.mapquest.com/documentation/directions-api/">MapQuest</a></span>
+    </div>
+    <div class="box" [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+      <span><h5>Attributions</h5></span>
+      <span><a class="row" href="https://bas.dev/work/meteocons">Meteocons</a></span>
+      <span><a class="row" href="https://www.flaticon.com/" title="airplane animated icons" target="_blank">Icons by Flaticon</a></span>
+    </div>
+    <div class="box" [ngClass]="{'isPhonePortrait': isHandsetPortrait}">
+      <span><h5>Contact Us</h5></span>
+      <div class="grid-footer">
+        <span class="linkedin"><a href="https://www.linkedin.com/in/amshakumaraiah/"><fa-icon [size]="'2x'"
+                                                                                              [icon]="faLinkedIn"></fa-icon></a></span>
+        <span class="github"><a href="https://github.com/amshak18"><fa-icon [size]="'2x'"
+                                                                            [icon]="faGithub"></fa-icon></a></span>
+        <span class="gmail"><a href="mailto:amshak@bu.edu"><fa-icon [size]="'2x'" [icon]="faGmail"></fa-icon></a></span>
+        <span class="facebook"><a href="https://www.facebook.com/amsha.kumaraiah/"><fa-icon [size]="'2x'"
+                                                                                            [icon]="faFacebook"></fa-icon></a></span>
+        <span class="instagram"><a href="https://www.instagram.com/amsha_kumaraiah/"><fa-icon [size]="'2x'"
+                                                                                              [icon]="faInstagram"></fa-icon></a></span>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,26 @@
+{
+  "baseUrl": "http://localhost:3000/",
+  "endpoints": {
+    "auth": {
+      "login": "login",
+      "signup": "signup"
+    },
+    "vehicle": {
+      "registration": "register",
+      "find": "vehicle/user",
+      "vehicle": "vehicle"
+    },
+    "users": {
+      "find": "users"
+    },
+    "service": {
+      "request": "service/request"
+    }
+  },
+  "services": {
+    "mapquest": {
+      "lookup": "locationLookup",
+      "address": "latLongLookup"
+    }
+  }
+}

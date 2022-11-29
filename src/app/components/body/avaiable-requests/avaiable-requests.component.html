@@ -1,0 +1,46 @@
+<mat-list>
+  <div mat-subheader>Available Requests</div>
+  <mat-list-item *ngFor="let request of serviceRequests; index as i">
+    <mat-icon mat-list-icon color="primary">face_6</mat-icon>
+    <div>
+      <div mat-line>
+        {{request.requestedBy!.firstName}} {{request.requestedBy!.lastName}}
+      </div>
+      <div mat-line>
+        {{request.requestedDate| date}}
+      </div>
+      <div mat-line>
+        <button [disabled]="!(request.status ==='NEW')" mat-icon-button color="primary"
+                (click)="acceptRequest(request._id!, i)">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button [disabled]="!(request.status ==='NEW')" mat-icon-button color="warn">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+<mat-list>
+  <div mat-subheader>Accepted Requests</div>
+  <mat-list-item *ngFor="let request of acceptedServiceRequests; index as i">
+    <mat-icon mat-list-icon color="primary">face_6</mat-icon>
+    <div>
+      <div mat-line>
+        {{request.requestedBy!.firstName}} {{request.requestedBy!.lastName}}
+      </div>
+      <div mat-line>
+        {{request.requestedDate| date}}
+      </div>
+      <div mat-line>
+        <button [disabled]="(request.status ==='COMPLETED')" mat-raised-button color="accent"
+                (click)="completeRequest(request._id!, i)">
+          Complete Trip
+        </button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>

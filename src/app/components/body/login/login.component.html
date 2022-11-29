@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar> emoji_transportation</mat-icon>
+    <mat-card-title>Sign In</mat-card-title>
+    <mat-card-subtitle>To use WheelsRide</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="login-container">
+      <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input matInput type="text" [(ngModel)]="username" placeholder="username">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button id="loginButton" mat-raised-button color="primary" (click)="login()">Login</button>
+  </mat-card-actions>
+</mat-card>
+
+

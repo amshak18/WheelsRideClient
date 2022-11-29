@@ -1,0 +1,95 @@
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-items: center;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.search-container > div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.search-container.isPhonePortrait {
+  flex-direction: column;
+  padding: unset;
+}
+
+.search-container.isPhonePortrait > div {
+  margin: auto;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-items: center;
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+}
+
+.results-container > div {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.search-icon {
+  height: 100px !important;
+  width: 100px !important;
+  font-size: 100px !important;
+}
+
+.search-field {
+  width: 250px;
+}
+
+.from-to-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.from-to {
+  display: block;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  height: 100px;
+  width: auto;
+}
+
+.results {
+  margin-top: 5em;
+}
+
+.map {
+  margin-top: 5em;
+}
+
+.hotels {
+  overflow-x: auto;
+}
+
+.spacer {
+  flex: 1 1 auto
+}
+
+.header {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.buttons {
+  display: table-cell;
+}
+
+.buttons .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+

@@ -1,0 +1,27 @@
+<div *ngIf="registered; then login else signup"></div>
+<ng-template #login>
+  <div class="signin-outer-container">
+    <div>
+      <app-login></app-login>
+    </div>
+    <div>
+      Don't have an account?
+      <button mat-button color="primary" (click)="registered = false">Sign Up</button>
+    </div>
+
+  </div>
+</ng-template>
+<ng-template #signup>
+  <div class="signin-outer-container">
+    <div>
+      <app-register></app-register>
+    </div>
+    <div>
+      Already have an account?
+      <button mat-button color="primary" (click)="registered = true">Sign In</button>
+    </div>
+
+  </div>
+</ng-template>
+
+
