@@ -63,6 +63,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   getUserRequests() {
     if (this.authService.isLoggedIn()) {
+      this.user = this.authService.getLoggedInUser();
       this.requestService.findAllRequestedBy(this.user._id!).subscribe({
         next: (serviceRequests) => {
           this.serviceRequests = serviceRequests;
