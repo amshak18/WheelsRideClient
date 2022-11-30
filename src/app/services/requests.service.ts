@@ -35,6 +35,15 @@ export class RequestsService {
     });
   }
 
+  findAllCompleted(userId: string): Observable<ServiceRequest[]> {
+    return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
+      params: {
+        status: 'COMPLETED',
+        provider: userId
+      }
+    });
+  }
+
   findAllRequestedBy(userId: string): Observable<ServiceRequest[]> {
     return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
       params: {

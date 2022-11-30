@@ -13,12 +13,14 @@ import {Router} from "@angular/router";
 export class AvaiableRequestsComponent implements OnInit, OnDestroy {
   watchId!: NodeJS.Timer;
   acceptedWatchId!: NodeJS.Timer;
+  completedWatchId!: NodeJS.Timer;
 
   constructor(private router: Router, private requestService: RequestsService, private authService: AuthService) {
   }
 
   serviceRequests: ServiceRequest[] = [];
   acceptedServiceRequests: ServiceRequest[] = [];
+  completedServiceRequests: ServiceRequest[] = [];
 
   getAvaialableRequests() {
     this.requestService.findAll().subscribe({
@@ -37,6 +39,20 @@ export class AvaiableRequestsComponent implements OnInit, OnDestroy {
       this.requestService.findAllAccepted(user._id!).subscribe({
         next: (acceptedRequests) => {
           this.acceptedServiceRequests = acceptedRequests;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
+    }
+  }
+
+  getCompletedRequests() {
+    if (this.authService.isLoggedIn()) {
+      const user: User = this.authService.getLoggedInUser();
+      this.requestService.findAllCompleted(user._id!).subscribe({
+        next: (acceptedRequests) => {
+          this.completedServiceRequests = acceptedRequests;
         },
         error: (error) => {
           console.log(error);
@@ -83,7 +99,7 @@ export class AvaiableRequestsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if(this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
       this.watchId = setInterval(() => {
         this.getAvaialableRequests();
       }, 3000);
@@ -91,8 +107,11 @@ export class AvaiableRequestsComponent implements OnInit, OnDestroy {
       this.acceptedWatchId = setInterval(() => {
         this.getAcceptedRequests();
       }, 3000);
-    }
-    else{
+
+      this.completedWatchId = setInterval(() => {
+        this.getCompletedRequests();
+      }, 3000);
+    } else {
       this.router.navigate(["/signin"])
     }
 
@@ -104,6 +123,9 @@ export class AvaiableRequestsComponent implements OnInit, OnDestroy {
     }
     if (this.acceptedWatchId) {
       clearInterval(this.acceptedWatchId);
+    }
+    if (this.completedWatchId) {
+      clearInterval(this.completedWatchId);
     }
   }
 
