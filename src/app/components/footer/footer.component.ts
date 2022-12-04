@@ -22,9 +22,17 @@ export class FooterComponent implements OnInit {
   isWebPortrait = false;
   isWebLandscape = false;
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param responsive the BreakPointObserver used to create the mobile first responsive UI.
+   */
   constructor(private responsive: BreakpointObserver) {
   }
 
+  /**
+   * This is an angular lifecycle method called when the component is displayed on the screen.
+   * This is used to subscribe to the BreakPointObserver and set the UI styles appropriately.
+   */
   ngOnInit(): void {
     this.responsive.observe([
       Breakpoints.HandsetPortrait,

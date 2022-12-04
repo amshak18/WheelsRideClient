@@ -46,6 +46,17 @@ export class ServiceRegisterComponent implements OnInit {
     licenseInfoControl: ['', Validators.required]
   });
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param formBuilder the FormBuilder to handle the service registration form
+   * @param router the angular router to handle navigation.
+   * @param responsive the BreakpointObserver to handle responsive UI for different screen sizes
+   * @param snackBar the MatSnackBar to display errors
+   * @param vehicleService the VehicleService used to perform CRUD operations on the vehicle
+   * @param userService the UserService used to get the user information.
+   * @param locationService the LocationService used to get the current location for the vehicle.
+   * @param authService the AuthService used to get the logged-in user information.
+   */
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -58,6 +69,9 @@ export class ServiceRegisterComponent implements OnInit {
   ) {
   }
 
+  /**
+   * THis method is used to perform the service registration.
+   */
   register() {
     this.registerInProgress = true;
     const body: any = {
@@ -116,6 +130,9 @@ export class ServiceRegisterComponent implements OnInit {
     }
   }
 
+  /**
+   * THis is an angular lifecycle method called when the component is loaded on the screen.
+   */
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
       this.user = this.authService.getLoggedInUser();

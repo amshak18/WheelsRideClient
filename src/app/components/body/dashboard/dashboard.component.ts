@@ -15,9 +15,20 @@ export class DashboardComponent implements OnInit {
   private readonly jwtTokenKey: string = "jwtToken";
   user: User = new User();
 
-  constructor(private router: Router, private authService: AuthService, private userService: UserService) {
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param router the angular router.
+   * @param authService the AuthService used to get the logged-in user information
+   * @param userService the UserService used to get additional user information
+   */
+  constructor(private router: Router,
+              private authService: AuthService,
+              private userService: UserService) {
   }
 
+  /**
+   * This is an angular lifecycle method called everytime the component is loaded on screen.
+   */
   ngOnInit(): void {
     if (this.authService.isLoggedIn()) {
       const id = _.get(JSON.parse(localStorage.getItem(this.userInfoKey)!), '_id');

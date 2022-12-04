@@ -8,3 +8,8 @@ mat-icon.mat-card-avatar {
   display: flex;
   flex-direction: column;
 }
+
+.stepper-actions {
+  display: flex;
+  justify-content: space-between;
+}

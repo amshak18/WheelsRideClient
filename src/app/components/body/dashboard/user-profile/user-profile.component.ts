@@ -17,6 +17,13 @@ export class UserProfileComponent implements OnInit {
   editing = false;
   cleanUser: User = new User();
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param dialog the MatDialog
+   * @param snackBar the MatSnackBar
+   * @param authService the AuthService to get logged-in user information
+   * @param userService the UserService to all the user information
+   */
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -24,10 +31,17 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService) {
   }
 
+  /**
+   * this is an angular lifecycle method called everytime the component is loaded on screen
+   */
   ngOnInit(): void {
 
   }
 
+  /**
+   * This method is used to store a clean copy of the user when the edits are being made.
+   * so it can be used to restore if the edits are canceled.
+   */
   edit() {
     if (this.user) {
       this.cleanUser = _.cloneDeep(this.user);
@@ -35,6 +49,10 @@ export class UserProfileComponent implements OnInit {
     this.editing = !this.editing;
   }
 
+  /**
+   * this method is used to show a confirmation dialog before deleting the user.
+   * @param id the id of the user.
+   */
   confirmDelete(id: string) {
     const dialogRef = this.dialog.open(ConfirmComponent);
     dialogRef.afterClosed().subscribe(result => {
@@ -44,6 +62,10 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * this method is used to actually delete the user.
+   * @param id the id of the user.
+   */
   delete(id: string) {
     this.userService.deleteById(id).subscribe({
       next: (value) => {
@@ -60,6 +82,10 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * this method is used to update the user
+   * @param user the user object with all the updated user information.
+   */
   update(user: User) {
     let clonedUser: any = _.cloneDeep(user);
     for (let key in clonedUser) {
@@ -77,6 +103,9 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
+  /**
+   * this method is used to cancel the edits made to the user object by restoring the cleanUser.
+   */
   cancel() {
     this.user = this.cleanUser;
     this.editing = false;

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import * as _ from "lodash";
 import {LocationService} from "../../services/location.service";
@@ -35,6 +35,15 @@ export class BodyComponent implements OnInit {
 
   user: User = new User();
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param router the angular router used to perform navigation
+   * @param responsive the BreakpointObserver used to get mobile first responsive UI
+   * @param snackBar the MatSnackBar used to display errors
+   * @param locationService the LocationService used to get current location and perform look-ups to get the lat and long positions.
+   * @param requestService the RequestService used to get the information on the ServiceRequest.
+   * @param authService the AuthService used to get the logged-in user information.
+   */
   constructor(
     private router: Router,
     private responsive: BreakpointObserver,
@@ -45,10 +54,18 @@ export class BodyComponent implements OnInit {
   ) {
   }
 
+  /**
+   * this method is used to see if all the required information is available to perform a search.
+   */
   canSearch() {
     return !_.isEmpty(this.searchFrom) && !_.isEmpty(this.searchTo)
   }
 
+  /**
+   * this method is used to get the current location.
+   * Once the location is obtained, it will update the from field with proper lat and ong coordinates.
+   * It will also perform a look-up to fetch the address string so that users are shown a useful string in the from field.
+   */
   getCurrentLocation() {
     this.locationService
       .getCurrentLocation()
@@ -75,6 +92,11 @@ export class BodyComponent implements OnInit {
       })
   }
 
+  /**
+   * This method is used to create a serviceRequest.
+   * Using the LocationService, a look-up will be performed to obtain the lat, long position of the to field.
+   * Using these information, a service request will be created with a status of 'NEW'
+   */
   searchResults() {
     if (this.authService.isLoggedIn()) {
       this.resultsLoading = true;
@@ -125,6 +147,9 @@ export class BodyComponent implements OnInit {
     }
   }
 
+  /**
+   * This is an angular lifecycle method used when the component is displayed on the screen.
+   */
   ngOnInit(): void {
 
     if (!this.jwtToken) {

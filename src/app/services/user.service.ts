@@ -13,24 +13,36 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * This method is used to find a user by id.
+   * @param id the id of the user.
+   */
   findUserById(id: string): Observable<User> {
     return this.http.get<User>(`${this.findEndpoint}/${id}`)
   }
 
-  findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.findEndpoint);
-  }
-
+  /**
+   * This method is used to delete a user by id.
+   * @param id the id of the user.
+   */
   deleteById(id: string): Observable<any> {
     const url = `${this.findEndpoint}/${id}`;
     return this.http.delete(url)
   }
 
+  /**
+   * This method is used to update a user.
+   * @param body the body containing the updated user information.
+   */
   updateUser(body: any): Observable<User> {
     const url = `${this.findEndpoint}/${body._id}`;
     return this.http.put<User>(url, body);
   }
 
+  /**
+   * this method is used to update the user with the isServiceProvider field set to true.
+   * @param id the id of the user
+   */
   registerAsProvider(id: string): Observable<User> {
     const body = {
       isServiceProvider: true

@@ -2,3 +2,15 @@
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+mat-list div.available::before {
+  content: '🚕';
+}
+
+mat-list div.accepted::before {
+  content: '👍🏽';
+}
+
+mat-list div.completed::before {
+  content: '✔︎';
+}

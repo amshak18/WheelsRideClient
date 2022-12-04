@@ -43,7 +43,7 @@ a, p {
   cursor: pointer;
 }
 
-.box {
+mat-toolbar mat-toolbar-row div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -64,7 +64,7 @@ a, p {
 }
 
 /*defining custom class for placement of icons in footer*/
-.grid-footer {
+mat-toolbar mat-toolbar-row div.grid-footer {
   display: grid;
   grid-template-areas: 'linkedin github gmail facebook instagram';
   column-gap: 25px;
@@ -96,4 +96,8 @@ a, p {
 .grid-footer.instagram {
   grid-area: instagram;
   align-items: center;
+}
+
+a:any-link{
+  font-weight: bold;
 }

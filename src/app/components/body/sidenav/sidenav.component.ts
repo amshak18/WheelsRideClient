@@ -36,6 +36,14 @@ export class SidenavComponent implements OnInit, OnDestroy {
   serviceRequests: ServiceRequest[] = []
   user: User = new User()
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param router the angular router used for navigation.
+   * @param dialog the MatDialog used to displaying confirmation messages.
+   * @param snackBar the MatSnackBar used to display errors.
+   * @param authService the AuthService used to get the logged-in user information.
+   * @param requestService the RequestService used to get the list of created serviceRequests.
+   */
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -45,9 +53,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Method used to show an alert to the user if they click the delete event button.
-   * If the user confirms deletion, the event is deleted from local storage.
-   * @param tripId the id of the trip that needs to be deleted.
+   * Method used to show an alert to the user if they click the delete button.
+   * If the user confirms deletion, the serviceRequest is deleted from local storage.
+   * @param id the serviceRequest id
    */
   confirmDelete(id: string) {
     const dialogRef = this.dialog.open(ConfirmComponent);
@@ -61,6 +69,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
     })
   }
 
+  /**
+   * This method is used to get all the service requests created by the user
+   */
   getUserRequests() {
     if (this.authService.isLoggedIn()) {
       this.user = this.authService.getLoggedInUser();
@@ -75,6 +86,10 @@ export class SidenavComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * this method is used to delete the ServiceRequest using the RequestService..
+   * @param id the id of the ServiceRequest to be deleted.
+   */
   deleteRequest(id: string) {
     if (this.authService.isLoggedIn()) {
       this.requestService.deleteOne(id).subscribe({
@@ -90,9 +105,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
 
   /**
-   * Used to initalize the component.
+   * Used to initialize the component.
    * Here, we listen to router events. so that when the route changes,
-   * we can be sure that the user clicked on a trip and we can close the drawer
+   * we can be sure that the user clicked on a historical ride, and we can close the drawer
    *
    * We also listen to MatSideNav openedChange event.
    * So that every time the drawer is opened or closed, we can refresh the data and the drawer stays uptodate.

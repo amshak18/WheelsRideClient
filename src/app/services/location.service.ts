@@ -18,6 +18,9 @@ export class LocationService {
   constructor(private http: HttpClient) {
   }
 
+  /**
+   * This is used to get the current lotitude and longitude by making use fo navigator.
+   */
   getCurrentLocation(): Observable<any> {
     return new Observable((observer) => {
       let watchId: number;
@@ -45,6 +48,11 @@ export class LocationService {
     });
   }
 
+  /**
+   * this method is used to get the location name by lat, long positions.
+   * @param lat the latitude
+   * @param long the longitude
+   */
   lookupLocationName(lat: number, long: number): Observable<GeocodeResponse> {
     let requestBody: Location = new Location();
     requestBody.location.latLng.lat = lat;
@@ -56,6 +64,10 @@ export class LocationService {
     });
   }
 
+  /**
+   * This method is used to get the latitude and longitude positions based on the name of the place.
+   * @param place the place name,
+   */
   lookupLatLong(place: string): Observable<GeocodeResponse> {
     let requestBody: Address = new Address();
     requestBody.location = place;

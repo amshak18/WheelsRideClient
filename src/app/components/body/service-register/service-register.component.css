@@ -8,3 +8,8 @@ mat-icon.mat-card-avatar {
   display: flex;
   flex-direction: column;
 }
+
+.outer-container{
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}

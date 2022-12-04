@@ -17,11 +17,20 @@ export class RequestDetailsComponent implements OnInit, OnDestroy {
   to: string = "";
   watchId!: NodeJS.Timer;
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param router the angular router used for navigation
+   * @param requestService the RequestService to get the information on ServiceRequests
+   * @param authService the AuthService to get the information on logged-in user.
+   */
   constructor(private router: Router, private requestService: RequestsService, private authService: AuthService) {
   }
 
+  /**
+   * This is an angular lifecycle method called when the component is loaded on screen.
+   */
   ngOnInit(): void {
-    if(this.authService.isLoggedIn()){
+    if (this.authService.isLoggedIn()) {
       if (history.state.data) {
         const stateObject: ServiceRequest = history.state.data.data;
         this.from = history.state.data.from;
@@ -30,22 +39,25 @@ export class RequestDetailsComponent implements OnInit, OnDestroy {
         this.watchId = setInterval(() => {
           this.checkRequestStatus();
         }, 5000);
-      }
-      else{
+      } else {
         this.router.navigate(["/"]);
       }
-    }
-    else{
+    } else {
       this.router.navigate(["/signin"]);
     }
 
   }
 
+  /**
+   * This method is used to check the ServiceRequest status.
+   * THis method will keep polling the server every 5 seconds for the status of the ServiceRequest.
+   * If there is a change to the status, the new information is made available to the user
+   */
   checkRequestStatus(): void {
     this.requestService.findOne(this.serviceRequest._id!).subscribe({
       next: (serviceRequest) => {
         this.serviceRequest = serviceRequest;
-        if(serviceRequest.provider){
+        if (serviceRequest.provider) {
           this.searching = false;
           console.log(JSON.stringify(serviceRequest.provider));
         }
@@ -54,7 +66,7 @@ export class RequestDetailsComponent implements OnInit, OnDestroy {
         }
       },
       error: (error) => {
-        if(error.error.message === 'No requests found!'){
+        if (error.error.message === 'No requests found!') {
           this.router.navigate(["/"]);
         }
         clearInterval(this.watchId);

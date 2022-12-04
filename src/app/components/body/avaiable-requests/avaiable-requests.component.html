@@ -1,6 +1,6 @@
 <div id="requestLists">
   <mat-list>
-    <div mat-subheader>Available Requests</div>
+    <div class="available" mat-subheader>Available Requests</div>
     <mat-list-item *ngFor="let request of serviceRequests; index as i">
       <mat-icon mat-list-icon color="primary">face_6</mat-icon>
       <div>
@@ -23,9 +23,11 @@
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
+
   <mat-divider></mat-divider>
+
   <mat-list>
-    <div mat-subheader>Accepted Requests</div>
+    <div class="accepted" mat-subheader>Accepted Requests</div>
     <mat-list-item *ngFor="let request of acceptedServiceRequests; index as i">
       <mat-icon mat-list-icon color="primary">face_6</mat-icon>
       <div>
@@ -45,10 +47,11 @@
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
+
   <mat-divider></mat-divider>
 
   <mat-list>
-    <div mat-subheader>Completed Requests</div>
+    <div class="completed"mat-subheader>Completed Requests</div>
     <mat-list-item *ngFor="let request of completedServiceRequests; index as i">
       <mat-icon mat-list-icon color="primary">face_6</mat-icon>
       <div>
@@ -62,5 +65,4 @@
       <mat-divider></mat-divider>
     </mat-list-item>
   </mat-list>
-
 </div>

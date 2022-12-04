@@ -1,0 +1,11 @@
+div button#yes{
+  color: darkred;
+}
+
+div button#no{
+  color: rebeccapurple;
+}
+
+.mat-dialog-actions{
+  justify-content: center;
+}

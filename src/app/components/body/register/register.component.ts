@@ -34,6 +34,13 @@ export class RegisterComponent implements OnInit {
     addressControl: ['', Validators.required]
   })
 
+  /**
+   * This is the component constructor where all the required services can be injected.
+   * @param formBuilder the FormBuilder used for form validation.
+   * @param authService the AuthService used to get the logged-in user information.
+   * @param router the angular router
+   * @param responsive the BreakPointObserver used to get the screen size information for making mobile first UI.
+   */
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -43,6 +50,9 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  /**
+   * This method is used to register the user with the application.
+   */
   signUp() {
     if (this.user.canRegister()) {
       const userPass = this.user.password;
@@ -68,6 +78,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  /**
+   * This is an angular lifecycle method called when the component is loaded on screen.
+   */
   ngOnInit(): void {
     this.responsive.observe([
       Breakpoints.HandsetPortrait,
