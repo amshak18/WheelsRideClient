@@ -1,6 +1,6 @@
 {
   "/login": {
-    "target": "http://localhost:3000/auth/login",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000/auth/login",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
@@ -9,7 +9,7 @@
     }
   },
   "/signup": {
-    "target": "http://localhost:3000/auth/signup",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000/auth/signup",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
@@ -18,7 +18,7 @@
     }
   },
   "/register": {
-    "target": "http://localhost:3000/vehicle/register",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000/vehicle/register",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug",
@@ -27,25 +27,25 @@
     }
   },
   "/users": {
-    "target": "http://localhost:3000",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000:3000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/vehicle": {
-    "target": "http://localhost:3000",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/vehicle/user": {
-    "target": "http://localhost:3000",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/service/request": {
-    "target": "http://localhost:3000",
+    "target": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000",
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"

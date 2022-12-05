@@ -9,6 +9,7 @@ import * as _ from 'lodash';
   providedIn: 'root'
 })
 export class VehicleService {
+  private readonly baseUrl: string = api.baseUrl;
   private readonly registerEndpoint: string = api.endpoints.vehicle.registration;
   private readonly vehiclesUserEndpoint: string = api.endpoints.vehicle.find;
   private readonly vehicleEndpoint: string = api.endpoints.vehicle.vehicle;
@@ -21,7 +22,8 @@ export class VehicleService {
    * @param body the body that contains the Vehicle body
    */
   register(body: any): Observable<Vehicle> {
-    return this.http.post<Vehicle>(this.registerEndpoint, body);
+    const url: string = `${this.baseUrl}${this.registerEndpoint}`
+    return this.http.post<Vehicle>(url, body);
   }
 
   /**
@@ -29,7 +31,7 @@ export class VehicleService {
    * @param userId the id of the user.
    */
   getVehiclesForUser(userId: string): Observable<Vehicle[]> {
-    const url: string = `${this.vehiclesUserEndpoint}/${userId}`;
+    const url: string = `${this.baseUrl}${this.vehiclesUserEndpoint}${userId}`;
     return this.http.get<Vehicle[]>(url);
   }
 
@@ -38,7 +40,7 @@ export class VehicleService {
    * @param vehicle the Vehicle object with all the updated fields.
    */
   updateVehicle(vehicle: Vehicle): Observable<Vehicle> {
-    const url: string = `${this.vehicleEndpoint}/${vehicle._id}`;
+    const url: string = `${this.baseUrl}${this.vehicleEndpoint}${vehicle._id}`;
     let clonedVehicle: any = _.cloneDeep(vehicle);
     for (let key in clonedVehicle) {
       if (key == 'vehicleOwner' || key == 'vehicleCurrentPosition' || key == 'vehicleLocation') {
@@ -53,7 +55,7 @@ export class VehicleService {
    * @param id the id of the vehicle to be deleted.
    */
   deleteVehicle(id: string): Observable<any> {
-    const url: string = `${this.vehicleEndpoint}/${id}`;
+    const url: string = `${this.baseUrl}${this.vehicleEndpoint}${id}`;
     return this.http.delete<any>(url);
   }
 }

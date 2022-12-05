@@ -9,6 +9,7 @@ import {ServiceRequest} from '../models/serviceRequest';
 })
 export class RequestsService {
 
+  private readonly baseUrl: string  = api.baseUrl;
   private readonly requestEndpoint: string = api.endpoints.service.request;
 
   constructor(private http: HttpClient) {
@@ -19,14 +20,16 @@ export class RequestsService {
    * @param body the request body containing the user and service request information.
    */
   request(body: any): Observable<ServiceRequest> {
-    return this.http.post<ServiceRequest>(this.requestEndpoint, body);
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}`
+    return this.http.post<ServiceRequest>(requestUrl, body);
   }
 
   /**
    * This method is used to find all the newly created service requests.
    */
   findAll(): Observable<ServiceRequest[]> {
-    return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}`
+    return this.http.get<ServiceRequest[]>(requestUrl, {
       params: {
         status: 'NEW'
       }
@@ -38,7 +41,8 @@ export class RequestsService {
    * @param userId the user id of the provider.
    */
   findAllAccepted(userId: string): Observable<ServiceRequest[]> {
-    return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}`
+    return this.http.get<ServiceRequest[]>(requestUrl, {
       params: {
         status: 'IN PROGRESS',
         provider: userId
@@ -51,7 +55,8 @@ export class RequestsService {
    * @param userId the userId of the provider.
    */
   findAllCompleted(userId: string): Observable<ServiceRequest[]> {
-    return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}`
+    return this.http.get<ServiceRequest[]>(requestUrl, {
       params: {
         status: 'COMPLETED',
         provider: userId
@@ -64,7 +69,8 @@ export class RequestsService {
    * @param userId the userId of the requester.
    */
   findAllRequestedBy(userId: string): Observable<ServiceRequest[]> {
-    return this.http.get<ServiceRequest[]>(this.requestEndpoint, {
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}`
+    return this.http.get<ServiceRequest[]>(requestUrl, {
       params: {
         requestedBy: userId
       }
@@ -76,10 +82,9 @@ export class RequestsService {
    * @param body the body containing the patch for the ServiceRequest
    */
   update(body: any): Observable<ServiceRequest> {
-    console.log(JSON.stringify(body));
     const requestId = body._id;
-    const url = `${this.requestEndpoint}/${requestId}`;
-    return this.http.patch<ServiceRequest>(url, body);
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}${requestId}`
+    return this.http.patch<ServiceRequest>(requestUrl, body);
   }
 
   /**
@@ -87,8 +92,8 @@ export class RequestsService {
    * @param id the id of the ServiceRequest.
    */
   findOne(id: string): Observable<ServiceRequest> {
-    const url: string = `${this.requestEndpoint}/${id}`;
-    return this.http.get<ServiceRequest>(url)
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}${id}`
+    return this.http.get<ServiceRequest>(requestUrl)
   }
 
   /**
@@ -96,7 +101,7 @@ export class RequestsService {
    * @param id the id of the ServiceRequest.
    */
   deleteOne(id: string): Observable<ServiceRequest> {
-    const url: string = `${this.requestEndpoint}/${id}`;
-    return this.http.delete<ServiceRequest>(url)
+    const requestUrl = `${this.baseUrl}${this.requestEndpoint}${id}`
+    return this.http.delete<ServiceRequest>(requestUrl)
   }
 }

@@ -1,26 +1,26 @@
 {
-  "baseUrl": "http://localhost:3000/",
+  "baseUrl": "http://ec2-52-6-135-119.compute-1.amazonaws.com:3000/",
   "endpoints": {
     "auth": {
-      "login": "login",
-      "signup": "signup"
+      "login": "auth/login/",
+      "signup": "auth/signup/"
     },
     "vehicle": {
-      "registration": "register",
-      "find": "vehicle/user",
-      "vehicle": "vehicle"
+      "registration": "vehicle/register/",
+      "find": "vehicle/user/",
+      "vehicle": "vehicle/"
     },
     "users": {
-      "find": "users"
+      "find": "users/"
     },
     "service": {
-      "request": "service/request"
+      "request": "service/request/"
     }
   },
   "services": {
     "mapquest": {
-      "lookup": "locationLookup",
-      "address": "latLongLookup"
+      "lookup": "http://www.mapquestapi.com/geocoding/v1/reverse",
+      "address": "http://www.mapquestapi.com/geocoding/v1/address"
     }
   }
 }

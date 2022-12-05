@@ -29,7 +29,7 @@ export class AuthService {
    */
   login(username: string, password: string): Observable<AuthResponse> {
     const loginUrl = `${this.baseUrl}${this.loginEndpoint}`
-    return this.http.post<AuthResponse>(this.loginEndpoint, {username, password})
+    return this.http.post<AuthResponse>(loginUrl, {username, password})
   }
 
   /**
@@ -38,7 +38,7 @@ export class AuthService {
    */
   signUp(user: User): Observable<User> {
     const signUpUrl = `${this.baseUrl}${this.signupEndpoint}`
-    return this.http.post<User>(this.signupEndpoint, user)
+    return this.http.post<User>(signUpUrl, user)
   }
 
   /**

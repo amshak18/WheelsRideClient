@@ -8,6 +8,7 @@ import {User} from "../models/user";
   providedIn: 'root'
 })
 export class UserService {
+  private readonly baseUrl: string = api.baseUrl;
   private readonly findEndpoint: string = api.endpoints.users.find
 
   constructor(private http: HttpClient) {
@@ -18,7 +19,8 @@ export class UserService {
    * @param id the id of the user.
    */
   findUserById(id: string): Observable<User> {
-    return this.http.get<User>(`${this.findEndpoint}/${id}`)
+    const url: string = `${this.baseUrl}${this.findEndpoint}${id}`
+    return this.http.get<User>(url);
   }
 
   /**
@@ -26,7 +28,7 @@ export class UserService {
    * @param id the id of the user.
    */
   deleteById(id: string): Observable<any> {
-    const url = `${this.findEndpoint}/${id}`;
+    const url: string = `${this.baseUrl}${this.findEndpoint}${id}`
     return this.http.delete(url)
   }
 
@@ -35,7 +37,7 @@ export class UserService {
    * @param body the body containing the updated user information.
    */
   updateUser(body: any): Observable<User> {
-    const url = `${this.findEndpoint}/${body._id}`;
+    const url: string = `${this.baseUrl}${this.findEndpoint}${body._id}`
     return this.http.put<User>(url, body);
   }
 
@@ -47,6 +49,7 @@ export class UserService {
     const body = {
       isServiceProvider: true
     }
-    return this.http.patch<User>(`${this.findEndpoint}/${id}`, body);
+    const url: string = `${this.baseUrl}${this.findEndpoint}${id}`
+    return this.http.patch<User>(url, body);
   }
 }

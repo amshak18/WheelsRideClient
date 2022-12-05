@@ -70,7 +70,7 @@
           "configurations": {
             "production": {
               "browserTarget": "WheelsRideClient:build:production",
-              "proxyConfig": "src/proxy.conf-prod.json"
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "WheelsRideClient:build:development",
